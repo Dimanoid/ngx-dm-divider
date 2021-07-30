@@ -29,8 +29,8 @@ jobs:
         run: |
           npm ci
           npm run build:ci
-      - name: Deploy to environment
+      - name: Publish to NPM
         working-directory: projects/lib
-        run: npm publish --access public
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
