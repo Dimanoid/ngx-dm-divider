@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleChanges } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges } from '@angular/core';
 import { InputBoolean, InputNumber } from './coercions';
 
 export interface Point {
@@ -10,7 +10,7 @@ export interface Point {
     selector: '[ngx-dm-divider]',
     exportAs: 'dmDivaider',
 })
-export class DmDividerDirective implements OnChanges {
+export class DmDividerDirective implements OnInit, OnChanges {
     @Input('dmDividerDirection') direction: 'horizontal' | 'vertical' = 'horizontal';
     @Input('dmDividerInvert') @InputBoolean() invert: boolean | string = false;
     @Input('dmDividerEnabled') @InputBoolean() enabled: boolean | string = true;
@@ -87,6 +87,12 @@ export class DmDividerDirective implements OnChanges {
         };
         this._r2.addClass(this._elemRef.nativeElement, 'ngx-dm-divider');
     }
+    
+    ngOnInit(): void {
+        this.startSize = +this.size!;
+        this.__dividerCalc({ x: 0, y: 0 });
+        this.startSize = undefined;
+    }
 
     ngOnChanges(_changes: SimpleChanges): void {
         const e = this._elemRef.nativeElement;
@@ -98,8 +104,6 @@ export class DmDividerDirective implements OnChanges {
             this._r2.removeClass(e, 'ngx-dm-divider-hor');
             this._r2.addClass(e, 'ngx-dm-divider-vert');
         }
-        this.startSize = +this.size!;
-        this.__dividerCalc({ x: 0, y: 0 });
     }
 
     dividerDragStart() {
