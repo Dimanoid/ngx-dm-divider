@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { NgxDmDividerDirective } from './ngx-dm-divider.directive';
+import { DmDividerDirective } from './ngx-dm-divider.directive';
 
 @NgModule({
-    declarations: [NgxDmDividerDirective],
+    declarations: [DmDividerDirective],
     imports: [],
-    exports: [NgxDmDividerDirective]
+    exports: [DmDividerDirective]
 })
-export class LibModule { }
+export class DmDividerModule { }

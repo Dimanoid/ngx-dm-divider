@@ -1,8 +1,8 @@
-import { NgxDmDividerDirective } from './ngx-dm-divider.directive';
+import { DmDividerDirective } from './ngx-dm-divider.directive';
 
-describe('NgxDmDividerDirective', () => {
+describe('DmDividerDirective', () => {
     it('should create an instance', () => {
-        const directive = new NgxDmDividerDirective();
+        const directive = new DmDividerDirective();
         expect(directive).toBeTruthy();
     });
 });

@@ -1,11 +1,15 @@
 {
-  "name": "lib",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/common": "^12.0.5",
-    "@angular/core": "^12.0.5"
-  },
-  "dependencies": {
-    "tslib": "^2.1.0"
-  }
+    "name": "@dimanoid/ngx-dm-divider",
+    "repository": {
+        "url": "https://github.com/Dimanoid/ngx-dm-divider.git"
+    },
+    "license": "MIT",
+    "version": "0.0.1",
+    "peerDependencies": {
+        "@angular/common": "^12.0.5",
+        "@angular/core": "^12.0.5"
+    },
+    "dependencies": {
+        "tslib": "^2.1.0"
+    }
 }
