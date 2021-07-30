@@ -12,11 +12,11 @@ export interface Point {
 })
 export class DmDividerDirective implements OnChanges {
     @Input('dmDividerDirection') direction: 'horizontal' | 'vertical' = 'horizontal';
-    @Input('dmDividerInvert') @InputBoolean() invert: boolean = false;
-    @Input('dmDividerEnabled') @InputBoolean() enabled: boolean = true;
-    @Input('dmDividerMin') @InputNumber() min: number = 0;
-    @Input('dmDividerMax') @InputNumber() max?: number;
-    @Input('dmDividerSize') @InputNumber() size?: number;
+    @Input('dmDividerInvert') @InputBoolean() invert: boolean | string = false;
+    @Input('dmDividerEnabled') @InputBoolean() enabled: boolean | string = true;
+    @Input('dmDividerMin') @InputNumber() min: number | string = 0;
+    @Input('dmDividerMax') @InputNumber() max?: number | string;
+    @Input('dmDividerSize') @InputNumber() size?: number | string;
     @Output('dmDividerSizeChange') sizeChange: EventEmitter<number> = new EventEmitter();
     @Output('dmDividerMoving') movingChange: EventEmitter<boolean> = new EventEmitter();
 
@@ -98,13 +98,15 @@ export class DmDividerDirective implements OnChanges {
             this._r2.removeClass(e, 'ngx-dm-divider-hor');
             this._r2.addClass(e, 'ngx-dm-divider-vert');
         }
+        this.startSize = +this.size!;
+        this.__dividerCalc({ x: 0, y: 0 });
     }
 
     dividerDragStart() {
         this.moving = true;
         this._r2.addClass(this._elemRef.nativeElement, 'ngx-dm-divider-moving');
         this.movingChange.emit(this.moving);
-        this.startSize = this.size;
+        this.startSize = +this.size!;
     }
 
     dividerDragEnd(p: Point) {
@@ -123,10 +125,10 @@ export class DmDividerDirective implements OnChanges {
         const m = this.invert ? -1 : 1;
         let size = +this.startSize! + (m * p[axis]);
         if (size < this.min) {
-            size = this.min;
+            size = +this.min;
         }
         if (this.max && size > this.max) {
-            size = this.max;
+            size = +this.max;
         }
         this.size = size;
         this.sizeChange.emit(this.size);
