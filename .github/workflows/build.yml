@@ -26,7 +26,8 @@ jobs:
         with:
           package: "./projects/lib/package.json"
           token: ${{ secrets.NPM_TOKEN }}
-      - run: echo "Version change: < ${{ steps.publish.outputs.type }}> ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
+      - run: |
+          echo "Version change: <${{ steps.publish.outputs.type }}> ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
       # - run: npm publish --access public
       #   working-directory: projects/lib
       #   env:
