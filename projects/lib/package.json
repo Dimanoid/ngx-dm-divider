@@ -4,7 +4,7 @@
         "url": "https://github.com/Dimanoid/ngx-dm-divider.git"
     },
     "license": "MIT",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "peerDependencies": {
         "@angular/common": "^12.0.5",
         "@angular/core": "^12.0.5"
