@@ -89,9 +89,11 @@ export class DmDividerDirective implements OnInit, OnChanges {
     }
     
     ngOnInit(): void {
-        this.startSize = +this.size!;
-        setTimeout(() => this.__dividerCalc({ x: 0, y: 0 }));
-        this.startSize = undefined;
+        setTimeout(() => {
+            this.startSize = +this.size!;
+            this.__dividerCalc({ x: 0, y: 0 });
+            this.startSize = undefined;
+        });
     }
 
     ngOnChanges(_changes: SimpleChanges): void {
