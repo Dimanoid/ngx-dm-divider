@@ -22,6 +22,5 @@ jobs:
       - run: npm ci
       - run: npm run build:ci
       - run: cd /home/runner/work/ngx-dm-divider/ngx-dm-divider/dist/lib && npm publish --access public
-        working-directory: projects/lib
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
